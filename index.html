@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elegant Shayari Universe</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+  <style>
+    /* Reset and Base Styles */
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Poppins', sans-serif;
+      overflow: hidden;
+    }
+
+    /* Background image with dark gradient overlay */
+    body {
+      background: url('original_uploaded_image.jpg') no-repeat center center fixed;
+      background-size: cover;
+      position: relative;
+    }
+
+    body:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(10, 10, 20, 0.9), rgba(30, 30, 40, 0.8));
+      z-index: -1;
+    }
+
+    /* Glowing title */
+    .title {
+      text-align: center;
+      font-family: 'Great Vibes', cursive;
+      font-size: 4em;
+      color: #ffffff;
+      text-shadow: 0 0 10px #8a2be2, 0 0 20px #6a0dad, 0 0 30px #4b0082;
+      margin-top: 50px;
+      animation: glowPulse 3s infinite alternate;
+    }
+
+    @keyframes glowPulse {
+      from { text-shadow: 0 0 10px #8a2be2; }
+      to { text-shadow: 0 0 30px #6a0dad; }
+    }
+
+    /* Shayari container */
+    .container {
+      text-align: center;
+      margin: 20px auto;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 20px 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+      width: 90%;
+      max-width: 800px;
+    }
+
+    .shayari-box {
+      font-size: 1.6em;
+      line-height: 1.8;
+      color: #e0e0e0;
+      font-weight: 600;
+      background: linear-gradient(90deg, #6a0dad, #8a2be2);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      animation: textColorShift 8s infinite linear;
+    }
+
+    @keyframes textColorShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Buttons with dark hover effects */
+    button {
+      margin: 15px;
+      padding: 15px 40px;
+      font-size: 1em;
+      font-weight: bold;
+      color: #fff;
+      background: linear-gradient(45deg, #4b0082, #8a2be2);
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+      transition: all 0.4s;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+      background: linear-gradient(45deg, #2e0854, #4b0082);
+      box-shadow: 0 10px 30px rgba(50, 50, 60, 0.5);
+    }
+
+    button:before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 0;
+      height: 0;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      z-index: -1;
+      transition: width 0.4s, height 0.4s;
+    }
+
+    button:hover:before {
+      width: 300px;
+      height: 300px;
+    }
+
+    /* Secret Shayari */
+    #secretShayari {
+      font-style: italic;
+      font-size: 1.4em;
+      color: #ffcc00;
+      text-shadow: 0 0 10px #ffa500, 0 0 20px #ff8c00;
+      display: none;
+      margin-top: 20px;
+      animation: fadeIn 2s ease-in-out forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Floating animation */
+    .floating {
+      position: absolute;
+      color: #ffa500;
+      font-size: 1.5em;
+      animation: float 7s infinite;
+      pointer-events: none;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(100vh) rotate(0); opacity: 0.8; }
+      50% { opacity: 1; }
+      100% { transform: translateY(-20vh) rotate(360deg); opacity: 0; }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .title {
+        font-size: 2.5em;
+      }
+
+      .shayari-box {
+        font-size: 1.2em;
+      }
+
+      button {
+        font-size: 0.9em;
+        padding: 10px 25px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1 class="title">Elegant Shayari Universe 🌌</h1>
+  <div class="container">
+    <div class="shayari-box">
+      <p id="shayari">"Zindagi ek safar hai suhana,<br> Yahan kal kya ho kisne jaana."</p>
+      <button onclick="changeShayari()">Next Shayari</button>
+      <button onclick="showSecret()">Reveal Secret Shayari</button>
+    </div>
+    <p id="secretShayari">"Sabzi ko khete hai vegetable...<br> Sabzi ko khete hai vegetable...<br> Or fal ko khete hai fruit.<br> Oo Cutie hame tumhara Dil nahi chaiye tumhari chu**🙈"</p>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    const shayaris = [
+      "Zindagi ek safar hai suhana,<br> Yahan kal kya ho kisne jaana.",
+      "Tanha hai hum apne jazbat le kar,<br> Tum mil jao bas yahi dua hai lekar.",
+      "Chandni raat aur tera saath,<br> Zindagi hai mere liye ek khaas baat.",
+      "Dil ke armaan, aansuon mein beh gaye,<br> Hum wafa karte karte tanha reh gaye.",
+      "Mohabbat ek khwab hai,<br> Aur hum sapne dekhne ke aadi hain."
+    ];
+
+    let index = 0;
+
+    function changeShayari() {
+      index = (index + 1) % shayaris.length;
+      document.getElementById("shayari").innerHTML = shayaris[index];
+      createFloatingElement("✨");
+    }
+
+    function showSecret() {
+      const secretElement = document.getElementById("secretShayari");
+      secretElement.style.display = "block";
+      createFloatingElement("💖");
+    }
+
+    function createFloatingElement(symbol) {
+      const floating = document.createElement("div");
+      floating.classList.add("floating");
+      floating.innerHTML = symbol;
+      floating.style.left = Math.random() * 100 + "vw";
+      floating.style.animationDuration = Math.random() * 3 + 4 + "s";
+      document.body.appendChild(floating);
+      setTimeout(() => floating.remove(), 7000);
+    }
+  </script>
+</body>
+</html>
